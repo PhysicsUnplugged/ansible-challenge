@@ -1,0 +1,3 @@
+---
+# vars file for my-role
+custom_variable: quux   # It's a bad idea to define this value all over the place, but this might be useful in a demonstration.

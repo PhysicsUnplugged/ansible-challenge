@@ -1,0 +1,35 @@
+---
+# To check the steps in a playbook without executing them, aka a dry run:
+#
+#      ansible-playbook -i local interview-playbook.yml --step --check
+#
+# To run the playbook one step at a time:
+#
+#      ansible-playbook -i local interview-playbook.yml --step
+#
+# To run the playbook:
+#
+#      ansible-playbook -i local interview-playbook.yml
+#
+# The playbook variable is defined using an independent top level variable. This allows you to
+#
+#      ansible-playbook -i local interview-playbook.yml --extra-vars "the_custom_variable=bar"
+#
+#  or
+#
+#      ansible-playbook -i local interview-playbook.yml --extra-vars "custom_variable=bar"
+#
+# This playbook has been tested with Ansible 2.9.0.
+#
+#
+  - hosts: all
+    connection: local
+    gather_facts: no
+
+    vars:
+      - the_custom_variable: test1234
+
+    roles:
+      - { role: my-role,
+          custom_variable: "{{ the_custom_variable }}"
+      }

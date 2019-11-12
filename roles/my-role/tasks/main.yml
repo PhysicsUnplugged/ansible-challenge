@@ -1,0 +1,10 @@
+---
+# tasks file for my-role
+- name: get os details
+  setup:
+- name: render my template
+  template:
+    src: my-template.j2
+    dest: ~/Desktop/my-template.txt
+    mode: 0600
+
